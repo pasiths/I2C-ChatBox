@@ -18,8 +18,4 @@ Frontend Packages:
 
 In the project directory, you can run:
 
-Backend run:
-### `npm run server`
-
-Frontend run:
-### `npm run dev`
+### `npm start`
