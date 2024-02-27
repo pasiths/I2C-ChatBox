@@ -11,6 +11,10 @@ Frontend Packages:
 ### `npx tailwindcss init -p`
 ### `npm i -D daisyui@latest`
 ### `npm install react-icons --save`
+### `npm i react-router-dom`
+### `npm i react-hot-toast`
+### `npm install zustand`
+### `npm i socket.io-client`
 
 In the project directory, you can run:
 
