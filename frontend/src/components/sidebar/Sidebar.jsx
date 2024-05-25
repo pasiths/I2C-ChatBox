@@ -1,15 +1,18 @@
-import Conversations from "./Conversations";
-import LogoutButton from "./LogoutButton";
-import SearchInput from "./SearchInput";
+import React from "react";
+import UserInfo from "./userInfo/UserInfo";
+import SearchBar from "./searchBar/SearchBar";
+import ChatList from "./chatList/ChatList";
+import useConversation from "../../zustand/useConversation";
 
-const Sidebar = () => {
+const SideBar = () => {
+  const { selectedConversation, setSelectedConversation } = useConversation();
   return (
-    <div className="border-r border-slate-500 p-4 flex flex-col">
-      <SearchInput />
-      <div className="divider px-3"></div>
-      <Conversations />
-      <LogoutButton />
+    <div className={`sideBar  ${selectedConversation ? "dnone": "dshow"}`}>
+      <UserInfo />
+      <SearchBar />
+      <ChatList />
     </div>
   );
 };
-export default Sidebar;
+
+export default SideBar;

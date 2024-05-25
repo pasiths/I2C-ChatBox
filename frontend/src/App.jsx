@@ -1,28 +1,39 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+
 import "./App.css";
-import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
-import SignUp from "./pages/signup/SignUp";
+
 import { useAuthContext } from "./context/AuthContext";
+import Home from "./pages/home/Home";
+import AuthContainer from "./pages/authcontainer/AuthContainer";
 
 function App() {
   const { authUser } = useAuthContext();
+
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const detectTouchDevice = () => {
+      return "ontouchstart" in window || navigator.maxTouchPoints;
+    };
+
+    setIsTouchDevice(detectTouchDevice());
+    const handleTouchStart = () => {
+      setIsTouchDevice(true);
+    };
+
+    document.addEventListener("touchstart", handleTouchStart);
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+    };
+  }, []);
+
   return (
-    <div className="p-4 h-screen flex items-center justify-center">
+    <div className={isTouchDevice ? "touch-device" : ""}>
       <Routes>
-        <Route
-          path="/"
-          element={authUser ? <Home /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/login"
-          element={authUser ? <Navigate to="/" /> : <Login />}
-        />
-        <Route
-          path="/signup"
-          element={authUser ? <Navigate to="/" /> : <SignUp />}
-        />
+        <Route path="/" element={authUser ? <Home /> : <AuthContainer />} />
       </Routes>
       <Toaster />
     </div>

@@ -1,5 +1,5 @@
-import { useState } from "react";
 import toast from "react-hot-toast";
+import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 
 const useLogin = () => {
@@ -10,6 +10,7 @@ const useLogin = () => {
     const success = handleInputErrors(username, password);
     if (!success) return;
     setLoading(true);
+
     try {
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -30,9 +31,9 @@ const useLogin = () => {
       setLoading(false);
     }
   };
-
   return { loading, login };
 };
+
 export default useLogin;
 
 function handleInputErrors(username, password) {
