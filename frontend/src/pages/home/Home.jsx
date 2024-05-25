@@ -1,13 +1,13 @@
 import React from "react";
 import "./home.css";
 import Chats from "../../components/chat/Chats";
-import SideBar from "../../components/sideBar/SideBar";
+import Rightsite from "../../components/rightsite/Rightsite";
 
 const Home = () => {
   return (
     <>
       <div className="homeContainer">
-        <SideBar />
+        <Rightsite />
         <Chats />
       </div>
     </>

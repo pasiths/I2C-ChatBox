@@ -10,7 +10,10 @@ const Conversation = ({ conversation, lastIdx }) => {
 
   return (
     <>
-      <div className={`block ${isSelected ? "active" : ""}`} onClick={() => setSelectedConversation(conversation)} >
+      <div
+        className={`block ${isSelected ? "active" : ""}`}
+        onClick={() => setSelectedConversation(conversation)}
+      >
         <div className={`imgbx ${isOnline ? "online" : ""}`}>
           <img src={conversation.profilePic} className="cover" />
         </div>

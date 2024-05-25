@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import useGetConversations from "../../../hooks/useGetConversations";
-import Conversation from "./conversation/Conversation";
 import useSearch from "../../../zustand/useSearch";
+import Conversation from "./conversation/Conversation";
 
-const ChatList = () => {
+const Chatlist = () => {
   const { loading, conversations } = useGetConversations();
   const { search, matchingConversations } = useSearch();
 
   const conversationsToRender =
     search?.length >= 0 ? matchingConversations : conversations;
-
   return (
     <div className="chatList flex flex-col">
       {conversationsToRender?.length > 0
@@ -31,4 +30,4 @@ const ChatList = () => {
   );
 };
 
-export default ChatList;
+export default Chatlist;
