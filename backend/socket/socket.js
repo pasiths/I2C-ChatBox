@@ -4,10 +4,12 @@ import express from "express";
 
 const app = express();
 
+const BASE_URL = process.env.BASE_URL || "http://localhost:3030";
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3030"],
+    origin: [BASE_URL],
     methods: ["GET", "POST"],
   },
 });
